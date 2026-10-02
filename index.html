@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Starship Flight 14 — a route in space</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,460;6..72,560&family=Outfit:wght@340;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="viewport"></div>
+  <div class="vignette"></div>
+  <div id="labels"></div>
+
+  <header class="top">
+    <p class="kicker">SpaceX · Ship 41 · 28 September 2026</p>
+    <h1>Flight 14, from space</h1>
+    <p class="deck" id="deck"></p>
+  </header>
+
+  <div class="modes" role="tablist">
+    <button type="button" data-mode="flown" class="on" role="tab">What flew</button>
+    <button type="button" data-mode="planned" role="tab">The six-orbit plan</button>
+  </div>
+
+  <section class="readout" aria-live="polite">
+    <div class="clock">
+      <span id="met">0:00</span>
+      <span id="utc">12:48:59 UTC</span>
+    </div>
+    <p class="phase" id="phase">Ascent</p>
+    <dl>
+      <div><dt>Altitude</dt><dd id="alt">0 km</dd></div>
+      <div><dt>Speed</dt><dd id="spd">0 km/s</dd></div>
+      <div><dt>Ground point</dt><dd id="ll">26°N 97°W</dd></div>
+      <div><dt>Revolutions</dt><dd id="laps">0.00</dd></div>
+    </dl>
+    <p class="note" id="note"></p>
+    <p class="fine" id="fine"></p>
+    <label class="check"><input type="checkbox" id="ghost" /> Ghost the other profile on the ground</label>
+    <label class="check"><input type="checkbox" id="follow" /> Follow the ship</label>
+  </section>
+
+  <section class="scale">
+    <label for="exag">Height exaggeration <span id="exag-val">7×</span></label>
+    <input id="exag" type="range" min="1" max="12" step="0.5" value="7" />
+    <button type="button" id="true-scale">True scale</button>
+  </section>
+
+  <footer class="timeline">
+    <button type="button" id="play" aria-label="Play or pause">Pause</button>
+    <div class="speeds" role="group" aria-label="Playback speed">
+      <button type="button" data-speed="60">60×</button>
+      <button type="button" data-speed="300" class="on">300×</button>
+      <button type="button" data-speed="1200">1200×</button>
+      <button type="button" data-speed="3600">3600×</button>
+    </div>
+    <div class="scrub">
+      <input id="scrub" type="range" min="0" max="1" step="1" value="0" />
+      <div id="ticks"></div>
+    </div>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
